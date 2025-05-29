@@ -1,0 +1,41 @@
+{
+  "name": "base-bailey-json",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch-path=./src ./src/index.js",
+    "start": "node src/index.js",
+    "stop": "pm2 delete bot",
+    "restart": "npm stop && npm run pm2",
+    "pm2": "pm2 start ./pm2.config.cjs"
+  },
+  "keywords": [],
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.19.0",
+    "@builderbot/bot": "1.2.8",
+    "@builderbot/provider-baileys": "1.2.8",
+  	"@builderbot/provider-wppconnect": "1.2.8",
+    "@google/generative-ai": "^0.3.1",
+    "dotenv": "^16.3.1",
+    "env": "^0.0.2",
+    "express": "4.18.2",
+    "googleapis": "^134.0.0",
+    "html-to-text": "^9.0.5",
+    "mssql": "^10.0.2",
+    "multer": "^1.4.5-lts.1",
+    "node-cron": "^3.0.3",
+    "openai": "^4.28.4",
+    "puppeteer": "^22.15.0",
+    "uniqid": "^5.4.0",
+    "wa-sticker-formatter": "4.3.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-plugin-builderbot": "latest",
+    "nodemon": "^3.1.0"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,289 @@
+{
+  "nombreConsultorio": "Consultorio de la Dra. Paula Curto",
+  "domicilio": "Nahuel Huapí 4945 Piso 2º Dpto. C - CABA",
+  "telefono": "222222",
+  "mail": "consultorio@gmail.com",
+  "horarioAtencion": "Lunes a Jueves de 9 a 18 Hs.",
+  "web": "",
+  "coberturas": "Atendemos de forma particular, y tambien con OSDE, Médicus y Medifé.",
+  "limite": "2024-07-31",
+  "feriados": [
+    "2024-04-19",
+    "2024-04-24",
+    "2024-04-25;2024-04-27"
+  ],
+  "provider": "wppconnect",
+  "envio": false,
+  "horaEnvio": "00:06",
+  "diasEnvio": "7",
+  "calendario": "primary",
+  "redireccion": "/calendar/auth",
+  "urlApp": "http://localhost:3004",
+  "resto": "Resto de la información de los servicios y temas que debería poder responder le bot.",
+  "ia": "openai",
+  "iaModel": "gpt-4o-mini",
+  "telHumano": "5491162524514",
+  "modo": "consultas",
+  "puerto": "3003",
+  "cuentas": "json",
+  "perfil": "4",
+  "sucursal": "1",
+  "sinPubli": false,
+  "base": "nm",
+  "ventasTN": false,
+  "servicios": [
+    {
+      "nombre": "Consulta",
+      "precio": "",
+      "descripcion": "Consulta sobre el estado general de la boca, realizando un diagnóstico de las tareas a realizar",
+      "duracion": "30"
+    },
+    {
+      "nombre": "Tratamiento de conducto",
+      "precio": "",
+      "descripcion": "Tratamiento de conducto",
+      "duracion": "60"
+    },
+    {
+      "nombre": "Extracciones",
+      "precio": "",
+      "descripcion": "Extracciones",
+      "duracion": "120"
+    },
+    {
+      "nombre": "Radiografias Dentales",
+      "precio": "",
+      "descripcion": "Radiografias Dentales",
+      "duracion": "0"
+    },
+    {
+      "nombre": "Blanqueamiento dental",
+      "precio": "",
+      "descripcion": "Blanqueamiento dental",
+      "duracion": "0"
+    },
+    {
+      "nombre": "Implantes dentales",
+      "precio": "",
+      "descripcion": "Implantes dentales",
+      "duracion": "0"
+    },
+    {
+      "nombre": "Ortodoncia (brackets)",
+      "precio": "",
+      "descripcion": "Ortodoncia (brackets)",
+      "duracion": "0"
+    }
+  ],
+  "doctores": [
+    {
+      "nombre": "jose",
+      "emoji": "👩🏼‍⚕",
+      "agenda": [
+        {
+          "dia": 0,
+          "nombre": "Domingo",
+          "atencion": false,
+          "desde": "00:00",
+          "hasta": "00:00",
+          "corteDesde": "",
+          "corteHasta": ""
+        },
+        {
+          "dia": 1,
+          "nombre": "Lunes",
+          "atencion": true,
+          "desde": "10:00",
+          "hasta": "20:00",
+          "corteDesde": "13:00",
+          "corteHasta": "14:00"
+        },
+        {
+          "dia": 2,
+          "nombre": "Martes",
+          "atencion": true,
+          "desde": "10:00",
+          "hasta": "13:00",
+          "corteDesde": "",
+          "corteHasta": ""
+        },
+        {
+          "dia": 3,
+          "nombre": "Miércoles",
+          "atencion": true,
+          "desde": "10:00",
+          "hasta": "16:00",
+          "corteDesde": "",
+          "corteHasta": ""
+        },
+        {
+          "dia": 4,
+          "nombre": "Jueves",
+          "atencion": false,
+          "desde": "00:00",
+          "hasta": "00:00",
+          "corteDesde": "",
+          "corteHasta": ""
+        },
+        {
+          "dia": 5,
+          "nombre": "Viernes",
+          "atencion": false,
+          "desde": "00:00",
+          "hasta": "00:00",
+          "corteDesde": "",
+          "corteHasta": ""
+        },
+        {
+          "dia": 6,
+          "nombre": "Sábado",
+          "atencion": false,
+          "desde": "00:00",
+          "hasta": "00:00",
+          "corteDesde": "",
+          "corteHasta": ""
+        },
+        {
+          "dia": 9,
+          "nombre": "Feriado",
+          "atencion": false,
+          "desde": "00:00",
+          "hasta": "00:00",
+          "corteDesde": "",
+          "corteHasta": ""
+        }
+      ],
+      "tiposTurno": [
+        {
+          "nombre": "Consulta",
+          "duracion": "30",
+          "habilitado": true
+        },
+        {
+          "nombre": "Otra Consulta",
+          "duracion": "40",
+          "habilitado": false
+        }
+      ],
+      "feriados": [
+        "2024-04-21;2024-04-22"
+      ]
+    },
+    {
+      "nombre": "pedro",
+      "emoji": "✅",
+      "agenda": [
+        {
+          "dia": 0,
+          "nombre": "Domingo",
+          "atencion": false,
+          "desde": "00:00",
+          "hasta": "00:00",
+          "corteDesde": "",
+          "corteHasta": ""
+        },
+        {
+          "dia": 1,
+          "nombre": "Lunes",
+          "atencion": false,
+          "desde": "00:00",
+          "hasta": "00:00",
+          "corteDesde": "",
+          "corteHasta": ""
+        },
+        {
+          "dia": 2,
+          "nombre": "Martes",
+          "atencion": false,
+          "desde": "00:00",
+          "hasta": "00:00",
+          "corteDesde": "",
+          "corteHasta": ""
+        },
+        {
+          "dia": 3,
+          "nombre": "Miércoles",
+          "atencion": true,
+          "desde": "14:00",
+          "hasta": "20:00",
+          "corteDesde": "",
+          "corteHasta": ""
+        },
+        {
+          "dia": 4,
+          "nombre": "Jueves",
+          "atencion": true,
+          "desde": "14:00",
+          "hasta": "20:00",
+          "corteDesde": "",
+          "corteHasta": ""
+        },
+        {
+          "dia": 5,
+          "nombre": "Viernes",
+          "atencion": false,
+          "desde": "00:00",
+          "hasta": "00:00",
+          "corteDesde": "",
+          "corteHasta": ""
+        },
+        {
+          "dia": 6,
+          "nombre": "Sábado",
+          "atencion": false,
+          "desde": "00:00",
+          "hasta": "00:00",
+          "corteDesde": "",
+          "corteHasta": ""
+        },
+        {
+          "dia": 9,
+          "nombre": "Feriado",
+          "atencion": false,
+          "desde": "00:00",
+          "hasta": "00:00",
+          "corteDesde": "",
+          "corteHasta": ""
+        }
+      ],
+      "tiposTurno": [
+        {
+          "nombre": "Consultas",
+          "duracion": "15",
+          "habilitado": true
+        },
+        {
+          "nombre": "Consulta 2",
+          "duracion": "45",
+          "habilitado": true
+        }
+      ],
+      "feriados": [
+        "2024-05-06;2024-05-06"
+      ]
+    }
+  ],
+  "excluir": [],
+  "reiniciar": false,
+  "validaciones": [
+    {
+      "numero": "1162524514",
+      "nombre": "Nato",
+      "base": "KarinaEch;Casa_Chiche",
+      "activo": true
+    },
+    {
+      "numero": "1169734535",
+      "nombre": "Lucas",
+      "base": "KarinaEcht",
+      "activo": true
+    },
+    {
+      "numero": "1158312748",
+      "nombre": "KE_5831",
+      "base": "KarinaEcht",
+      "activo": true
+    }
+  ],
+  "storeTN": "1838368"
+}

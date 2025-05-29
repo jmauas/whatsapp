@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Configuración de Whatsapp</title>
+    <!-- FontAwesome -->
+    <script
+      src="https://kit.fontawesome.com/c6d95e531a.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      /* CSS styles for the dashboard */
+      body {
+        background-color: #f1dddd;
+        background-image: linear-gradient(to bottom right, #ffffff, #f2f2f2);
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        color: #333333;
+        text-align: center;
+        margin: 30px;
+      }
+
+      #configForm {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+        color: #635f5f;
+        font-weight: bold;
+      }
+
+      input[type="text"],
+      input[type="tel"],
+      input[type="email"],
+      textarea,
+      select {
+        width: 95%;
+        padding: 10px;
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+        font-size: 14px;
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 36px;
+        form-sizing: content;
+      }
+
+      button {
+        background-color: #ff66005b;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #ff5500;
+      }
+
+      .calendar-button {
+        background-image: url("google-calendar-logo.png");
+        background-repeat: no-repeat;
+        background-position: left;
+        background-size: 48px;
+        background-position-x: left;
+        padding-left: 56px;
+        height: 56px;
+        color: black;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        margin: 15px;
+      }
+
+      .calendar-button-2 {
+        background-image: url("google-calendar-logo.png");
+        background-repeat: no-repeat;
+        background-position: left;
+        background-size: 36px;
+        background-position-x: left;
+        padding-left: 42px;
+        height: 32px;
+        color: black;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: bold;
+        cursor: pointer;
+        margin: 15px;
+      }
+
+      .tn-button {
+        background-image: url("tn-logo.png");
+        background-repeat: no-repeat;
+        background-position: left;
+        background-size: 48px;
+        background-position-x: left;
+        padding-left: 56px;
+        height: 56px;
+        color: black;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .feriadoPicker {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: start;
+        gap: 20px;
+      }
+    
+      .labelFeriado {
+        font-weight: normal;
+        margin: 10px;
+      }
+
+      .feriadosPicker {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: start;
+        gap: 5px;
+      }
+
+      .encabezado {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        color: #ffffff;
+      }
+
+      .servicios {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .btn {
+        background-color: #ff66005b;
+        border: none;
+        padding: 10px 10px;
+        border-radius: 8px;
+        font-size: 12px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        color: black;
+        margin-left: 5px;
+      }
+
+      .btn-nav {
+        background-color: #ff66005b;
+        border: none;
+        padding: 10px 10px;
+        border-radius: 8px;
+        font-size: 16px;
+        text-decoration: none;
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        color: black;
+      }
+
+      .input {
+        border: 1px solid #cccccc;
+        border-radius: 10px;
+        font-size: 12px;
+        padding: 10px;
+
+      }
+
+      .filaServ {
+        padding: 8px;
+        border: 1px solid #cccccc;
+        border-radius: 10px;
+        font-size: 12px;
+        margin: 4px;
+        display: grid;
+        grid-row: auto;
+        grid-template-columns: 2fr 4fr 1fr 1fr;
+        align-items: center;
+        justify-items: center;
+      }
+      @media (max-width: 600px) {
+          .filaServ {
+              grid-template-columns: 1fr 3fr;
+          }
+      }
+
+      .colServ {
+        border: 0px;
+        border-radius: 10px;
+        font-size: 12px;
+        margin: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .inputServ {
+        border: 0px transparent;
+        border-radius: 10px;
+        font-size: 12px;
+      }
+
+      .inputServN {
+        border: 1px transparent black;
+        border-radius: 5px;
+        font-size: 16px;
+        width: 46px;
+      }
+
+      .filaAten {
+        padding: 8px;
+        border: 1px solid #cccccc;
+        border-radius: 10px;
+        font-size: 12px;
+        margin: 4px;        
+        display: grid;
+        grid-row: auto;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        align-items: center;
+        justify-items: center;
+      }
+
+      @media (max-width: 600px) {
+          .filaAten {
+              grid-template-columns: 1fr 1fr 1fr;
+          }
+      }
+
+      .colAten {
+        border: 0px;
+        border-radius: 10px;
+        font-size: 12px;
+        margin: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .filaTipoTurno {
+        padding: 8px;
+        border: 1px solid #cccccc;
+        border-radius: 10px;
+        font-size: 12px;
+        margin: 4px;
+        display: grid;
+        grid-row: auto;
+        grid-template-columns: 4fr 1fr 1fr 1fr;
+        align-items: center;
+        justify-items: center;
+      }
+
+      /* @media (max-width: 600px) {
+          .filaTipoTurno {
+              grid-template-columns: 3fr 1fr;
+          }
+      } */
+
+
+      .cartel {
+        background-color: #4CAF50; /* color de fondo verde */
+        color: white; /* color de texto blanco */
+        padding: 15px; /* espacio alrededor del texto */
+        margin: 10px 0; /* espacio arriba y abajo del cartel */
+        border-radius: 15px; /* bordes redondeados */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .aclaracion {
+        background-color: #dfe9df;
+        color: black;
+        padding: 5px;
+        margin: 4px;;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+      }
+
+      .filaDoctor {
+        padding: 8px;
+        border: 1px solid #cccccc;
+        border-radius: 10px;
+        font-size: 12px;
+        margin: 4px;
+        display: grid;
+        grid-row: auto;
+        grid-template-columns: 4fr 1fr 1fr;
+        align-items: center;
+        justify-items: center;
+        background-color: #dfe9df;
+      }
+
+      .colDoctor {
+        border: 0px;
+        border-radius: 10px;
+        font-size: 12px;
+        margin: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .filaExcluir {      
+        grid-template-columns: 4fr 4fr 1fr;      
+      }
+
+      .iaContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: start;
+        gap: 20px;
+      }
+
+      .modal {
+        opacity: 0;
+        transition: all 0.6s ease-in-out;
+        display: grid;
+        visibility: hidden;
+        position: fixed;
+        z-index: 1;
+        padding-top: 20px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        color: black;
+        background-color: rgba(0, 0, 0, 0.4);
+        justify-items: center;
+        align-items: start;
+      }
+
+      .modal[open] {
+          opacity: 1;
+          visibility: visible;
+      }
+
+      .modalTitle {
+        position: relative;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        gap: 30px;
+        background-color: #f1dddd;
+        color: black;
+        font-weight: bold;
+        border: #ff5500 solid 2px;
+        border-radius: 10px;
+      }
+
+      .editor {
+          width: 90vw; 
+          height: 75vh;
+          font-size: 16px; 
+          font-family: 'Courier New', Courier, monospace;
+          font-weight: bold;
+          border: 1px solid #cccccc; 
+          border-radius: 15px; 
+          padding: 10px;
+          resize: vertical;
+          overflow: auto;
+          box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+          margin-top: 15px;
+      }
+
+      .closeButton {
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        background-color: red;
+        color:white;
+        border: red solid 2px;
+        cursor: pointer;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px; 
+        opacity: 0.5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .closeButton:hover {
+        opacity: 1;
+      }
+
+      .menuItem {
+        font-size: 16px;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande";
+        font-weight: bold;
+        color: black;
+        /* padding: 25px; */
+      }
+
+      .inlineContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: start;
+        gap: 20px;
+      }
+
+      .filaCuentas {
+        padding: 8px;
+        border: 1px solid #cccccc;
+        border-radius: 10px;
+        font-size: 12px;
+        margin: 4px;
+        display: grid;
+        grid-row: auto;
+        grid-template-columns: 1fr 2fr 1fr 1fr 4fr;
+        align-items: center;
+        justify-items: center;
+      }
+      .filaCuentasRow {
+        grid-column: 1 / -1;
+        text-align: left;     /* Alinea el texto a la izquierda */
+        width: 100%;          /* Asegura que ocupe todo el ancho disponible */
+        justify-self: start;  /* Alinea el contenido al inicio (izquierda) en el grid */
+      }
+      
+       .colValidaciones {
+        border: 0px;
+        border-radius: 10px;
+        font-size: 12px;
+        margin: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 95%;
+      }
+
+      .filaValidaciones {
+        padding: 8px;
+        border: 1px solid #cccccc;
+        border-radius: 10px;
+        font-size: 12px;
+        margin: 4px;
+        display: grid;
+        grid-row: auto;
+        grid-template-columns: 1fr 1fr 2fr 2fr 1fr 1fr;
+        align-items: center;
+        justify-items: center;
+      }
+
+      .filaQr {
+        padding: 8px;
+        border: 1px solid #cccccc;
+        border-radius: 10px;
+        font-size: 12px;
+        margin: 4px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-items: center;
+        flex-wrap: wrap;
+      }
+
+      .seccEstado {
+        padding: 8px;
+        border: 1px solid #cccccc;
+        border-radius: 10px;
+        font-size: 12px;
+        margin: 4px;
+        display: grid;
+        grid-row: auto;
+        grid-template-columns: 1fr 4fr;
+        align-items: center;
+        justify-items: center;
+        text-align: start;
+        font-size: 16px;
+      }
+      
+      @media (max-width: 600px) {
+          .filaCuentas {
+              grid-template-columns: 1fr 4fr 1fr;
+          }
+          .filaValidaciones {
+              grid-template-columns: 1fr
+          }
+      }
+
+      .itemFeriado {
+        border: 1px solid #cccccc;
+        border-radius: 15px;
+        font-size: 14px;
+        margin: 5px;
+        padding: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #dfe9df;      
+        gap: 20px;
+      }
+
+      .pp {
+        font-size: 14px;
+        color: #333333;
+        text-decoration: none;
+        margin: 30px 65px;
+        display: block;
+      }
+
+      .navbar {
+        /* background-color: #333; */
+        overflow: hidden;
+      }
+      
+      .nav-menu {
+        list-style-type: none;
+        margin: 4;
+        padding: 4;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        justify-content: center ;
+      }
+
+      .nav-item {
+        flex: auto
+      }
+
+      .nav-button {
+        background-color: #ff66005b;
+        color: black;
+        border: black solid 1px;
+        padding: 14px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      .nav-button:active .nav-button:hover {
+        background-color: #ff6600;
+        color: white;
+      }
+
+      @media (max-width: 600px) {
+        .feriadoPicker,
+        .feriadosPicker,
+        .iaContainer {
+          flex-wrap: wrap;
+        }
+      }
+
+      /* CSS styles for the dashboard */
+      @media (max-width: 600px) {
+        #configForm {
+          max-width: 75%;
+          margin: 0 auto;
+          padding: 20px;
+          animation: mobileFormAnimation 0.5s forwards;
+        }
+      }
+
+      @keyframes mobileFormAnimation {
+        0% {
+          width: 95%;
+          padding: 10px;
+        }
+        100% {
+          width: 100%;
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="encabezado">
+      <h1>Configuración de Whatsapp</h1>
+      <img src="logo.png" alt="logo" width="150px" />
+    </div>
+
+    <div id="configForm">
+      <div id="seccionMenu">
+        
+          
+          
+          <nav class="navbar">
+            <ul class="nav-menu">
+              <li class="nav-item"><button class="nav-button" onclick="cambioMenu('')"><i class="fa-solid fa-house fa-xl"></i> Inicio</button></li>
+              <li class="nav-item"><button class="nav-button" onclick="cambioMenu('empresa')"><i class="fa-solid fa-industry fa-xl"></i> Datos Empresa</button></li>
+              <li class="nav-item"><button class="nav-button" onclick="cambioMenu('consultorio')"><i class="fa-solid fa-tooth fa-xl"></i> Conf. Consultorio</button></li>
+              <li class="nav-item"><button class="nav-button" onclick="cambioMenu('palabras')"><i class="fa-solid fa-magnifying-glass fa-xl"></i> Afinamiento Busqueda Productos</button></li>
+              <li class="nav-item"><button class="nav-button" onclick="cambioMenu('tecnica')"><i class="fa-solid fa-wrench fa-xl"></i> Opciones Técnicas</button></li>
+              <li class="nav-item"><button class="nav-button" onclick="cambioMenu('prompt')"><i class="fa-solid fa-comment fa-xl"></i> Editar Prompts</button></li>
+              <li class="nav-item"><button class="nav-button" onclick="cambioMenu('cuentas')"><i class="fa-brands fa-whatsapp fa-xl"></i> Cuentas Whatsapp</button></li>
+              <li class="nav-item"><button class="nav-button" onclick="cambioMenu('validacion')"><i class="fa-solid fa-user fa-xl"></i> Validar Numeros</button></li>
+            </ul>
+          </nav>
+          
+          <a href="/nuevo" class="btn-nav" >
+            <i class="fa-regular fa-calendar-days fa-2xl"></i>
+            Nuevo Turno
+          </a>
+      
+      </div>
+      
+      <div id="seccionEmpresa" style="display: none;">
+        
+        <div style="margin: 10px;">
+          <label for="nombreConsultorio">Nombre:</label>
+          <input type="text" id="nombreConsultorio" class="input"/>
+        </div>
+        <div style="margin: 10px;">
+          <label for="domicilio">Domicilio:</label>
+          <input type="text" id="domicilio" class="input"/>
+        </div>
+
+        <div style="display: flex; gap: 10px;">
+          <div style="margin: 10px">
+              <label for="telefono">Teléfono:</label>
+              <input type="tel" id="telefono" class="input"/>
+          </div>            
+          <div style="margin: 10px">
+              <label for="mail">Mail:</label>
+              <input type="email" id="mail" class="input"/>
+          </div>
+        </div>
+
+        <div class="inlineContainer">
+          <div style="margin: 10px">
+            <label for="web">Web:</label>
+            <input type="text" id="web" name="web" class="input" />
+          </div>
+          <div style="margin: 10px">
+            <label for="horarioAtencion">Horario Atención:</label>
+            <input type="text" id="horarioAtencion" name="horarioAtencion" class="input" required />
+          </div>
+        </div>
+        <label  style="margin-top: 10px" for="resto">Resto Aclaraciones / Descripción Empresa:</label>
+        <textarea id="resto" name="resto"></textarea>
+      </div>
+          
+      <div id="seccionConsultorio" style="display: none; margin-top: 20px;">
+        <div class="servicios">
+          <label for="servicios">Servicios:</label>
+          <button class="btn" type="button" onclick="agregar()">
+            <i class="fa-solid fa-plus"></i>
+            Agregar Servicio
+          </button>
+        </div>
+
+        <div id="servicios">
+          <div class="filaServ">
+              <div class="colServ" style="font-weight: bolder;">Nombre</div>
+              <div class="colServ" style="font-weight: bolder;">Descripción</div>
+              <div class="colServ" style="font-weight: bolder;">Acción</div>
+              <div class="colServ" style="font-weight: bolder;">Precio</div>
+          </div>
+          <div id="detalleServicios"></div>
+          <div class="aclaracion">
+            <span>
+              * Campo Precio no es obligatorio. <br />
+            </span>
+          </div>
+        </div>
+
+        <label for="coberturas">Coberturas Médicas:</label>
+        <textarea id="coberturas" name="coberturas"></textarea>
+        <br /><br />
+        <label for="feriados">Feriados:</label>
+        <div class="feriadoPicker">
+          <label for="fechaFeriado" class="labelFeriado">Fecha Feriado:</label>
+          <input type="date" id="fechaFeriado" name="fechaFeriado" style="font-size: large;"/><br /><br />
+          <button type="button" class="btn" onclick="addFeriado()">
+            <i class="fa-solid fa-plus"></i>
+              Agregar Feriado
+          </button>
+        </div>      
+        <div class="feriadosPicker">
+          <label for="fechaFeriados1" class="labelFeriado">Período sin Atención </label>
+          <label for="fechaFeriados1" class="labelFeriado">Desde: </label><input type="date" id="fechaFeriados1" style="font-size: large;" onchange="cambioFecha1('fechaFeriados1', 'fechaFeriados2')"/>
+          <label for="fechaFeriados2" class="labelFeriado">Hasta: </label><input type="date" id="fechaFeriados2" style="font-size: large;" onchange="cambioFecha2('fechaFeriados1', 'fechaFeriados2')"/>
+          <button type="button" class="btn" onclick="addFeriado2()">
+            <i class="fa-solid fa-plus"></i>
+            Agregar Período
+          </button>
+        </div>      
+        <div id="feriados" style="display: flex; flex-wrap: wrap;"></div>
+        <br /><br />
+        <label for="limite">Fecha Límite:</label>
+        <input type="date" id="limite" name="limite" required style="font-size: large;"/>
+        <br /><br />
+        <label for="horaEnvio">Envio Díario de Recordatorios:</label>
+        <div class="feriadoPicker">
+          <label for="envio" class="labelFeriado">Realiza Envios:</label>
+          <input id="envio" type="checkbox" role="switch">
+          <label for="horaEnvio" class="labelFeriado">Hora de Envío:</label>
+          <input type="time" id="horaEnvio">
+        </div>      
+        <div class="feriadoPicker">
+          <label for="diasEnvio" class="labelFeriado">Cant. Dias Futuros a Enviar:</label>
+          <input type="number" inputmode="tel" class="inputServN" id="diasEnvio" value="1">
+        </div>      
+        <br /><br />
+        <hr>
+        <br /><br />
+        <div class="servicios">
+          <label for="doctores">Doctores:</label>
+          <button class="btn" type="button" onclick="agregarDoctor()">
+            <i class="fa-solid fa-plus"></i>
+            Agregar Doctor
+          </button>
+        </div>
+        <div id="doctores">
+          <div id="detalleDoctores"></div>
+        </div>
+        <br /><br />    
+      </div>
+      <div id="seccionPalabras" style="display: none; margin-top: 20px;">
+        <div class="servicios">
+          <label for="atencion">Palabras a Excluir:</label>
+          <button class="btn" type="button" onclick="agregarExcluir()">
+              <i class="fa-solid fa-plus"></i>
+              Agregar Palabra
+          </button>
+        </div>
+          <div class="aclaracion">
+            <span>Si en la consulta se encuentra alguna de las palabras del campo "Si Están", y no está presente alguna de las palabras del campo "A Excluir...", entonces en la busqueda de productos se va a excluir los productos que inlcuyan en su título o descripción las palabraas del campo "A Excluir..."</span>
+          </div>
+          <div class="aclaracion">
+            <span>Con esto se logra refinar la busqueda de productos, impidiendo que en las consultas a la base de datos se obtengan resultados por los que se sabe que el cliente no està consultando.</span>
+          </div>
+          <div class="aclaracion">
+            <span>Por ejemplo, si el cliente busca "Cortina de Algódon", se sobre entiende que quiere saber por cortinas de ambiente. Sin embargo, en los resultados pueden aparecer cortinas de baño. Para evitar que eso suceda, se ingresa en el primer campo "cortina", y en el segundo "baño". De esta forma, la busqueda de productos va a excluir los productos con la palabra Baño en su título o descripción.</span>
+          </div>
+          <div id="excluir">
+            <div class="filaDoctor filaExcluir">
+              <div class="colDoctor" style="font-weight: bolder;">Si Están</div>
+              <div class="colDoctor" style="font-weight: bolder;">A Excluir si no Están</div>
+              <div class="colDoctor" style="font-weight: bolder;">Acciones</div>
+            </div>
+            <div id="detalleExcluir"></div>
+            <div class="aclaracion">
+              <span>Separar las Palabras con ;</span>
+            </div>
+        </div>
+        <br /><br />
+      </div>
+      
+    
+      <div id="seccionRegistrar" style="display: none; margin:15px;">
+        <div class="cartel" id="cartel" style="display: none;">
+          <i class="fa-solid fa-circle-check" size="2rem"></i>
+            <span style="margin: 10px;">
+              Registrado Con Éxito ¡¡¡¡¡¡
+            </span>
+        </div>
+        <button class="btn" onclick="registrar(false)" style="float: right;">
+          <i class="fa-solid fa-floppy-disk"></i>
+          Registrar Todo
+        </button>
+        <br /><br />
+      </div>
+      <hr>
+    
+      <div id="seccionTecnica" style="display: none; margin-top: 20px; align-items: center;">
+
+        <p><label>Configuración Técnica:</label></p>
+
+        <div class="feriadoPicker">
+          <label for="urlApp" class="labelFeriado">URL de la App:</label>
+          <input type="text" id="urlApp" class="input">
+        </div>
+        
+        <button onclick="authorizeCalendar()" class="calendar-button">
+          Autorizar Calendar
+        </button>
+        <button onclick="solicitarTokens()" class="calendar-button-2">
+          Solicitar Nuevos Tokens
+        </button>
+        
+        <div class="feriadoPicker">
+          <label for="calendario" class="labelFeriado">ID Calendario:</label>
+          <input type="text" id="calendario" class="input">
+          <label for="redireccion" class="labelFeriado">Redirección:</label>
+          <input type="text" id="redireccion" class="input">
+        </div>
+
+        <div class="iaContainer">
+          <label for="ia" class="labelFeriado">Servicio de IA a Utilizar:</label>
+          <select id="ia" name="ia" class="input" onChange="cambioIA()">
+            <option value="openai">Chat GPT</option>
+            <option value="anthropic">Claude 3</option>
+            <option value="gemini">Gemini</option>
+          </select>
+          
+          <label  class="labelFeriado">Modelo a Usar:</label>
+          <select id="openai" class="input">
+            <option value="gpt-3.5-turbo">GPT 3.5</option>
+            <option value="gpt-4-turbo">GPT 4 Turbo</option>
+            <option value="gpt-4o">GPT 4o</option>
+            <option value="gpt-4o-mini">GPT 4o Mini</option>
+            <option value="o1-preview">O1 Preview</option>
+            <option value="o1-mini">O1 Mini</option>
+          </select>
+          <select id="anthropic" class="input" style="display: none;">
+            <option value="claude-3-haiku-20240229">Haiku</option>
+            <option value="claude-3-sonnet-20240229">Sonnet</option>
+            <option value="claude-3-opus-20240229">Opus</option>
+          </select>
+          <select id="gemini" class="input" style="display: none;">
+            <option value="gemini-pro">Gemini 1.0 Pro</option>
+            <option value="gemini-1.5-pro-latest">Gemini 1.5 Pro</option>
+          </select>
+        </div>
+
+        <label for="telHumano" class="labelFeriado">Números a Notificar para Hablar con Una Persona:</label>
+        <input type="text" id="telHumano" class="input">
+        
+        <div class="feriadoPicker">
+          <div class="inlineContainer">
+            <label for="modo" class="labelFeriado">Modo de Trabajo:</label>
+            <select id="modo" class="input">
+              <option value="comercio">Comercio</option>
+              <option value="consultorio">Consultorio</option>
+              <option value="consultas">Consultas a Base de Datos</option>
+            </select>
+          </div>
+          <div class="inlineContainer">
+            <label for="puerto" class="labelFeriado">Puerto de la App:</label>
+            <input type="number" id="puerto" inputmode="tel" class="input">
+          </div>
+        </div>
+        
+        <div class="feriadoPicker">
+          <div class="inlineContainer">
+            <label for="cuentas" class="labelFeriado">Leer Cuentas de:</label>
+            <select id="cuentas" class="input">
+              <option value="bd">Base de Datos</option>
+              <option value="json">Archivo JSON</option>
+            </select>
+          </div>  
+          <div class="inlineContainer">
+            <label for="sinPubli" class="labelFeriado">Utiliza Productos Sin Publicaciones en Línea:</label>
+            <input id="sinPubli" type="checkbox" role="switch">
+          </div>
+        </div>
+
+        <div class="feriadoPicker">
+          <div class="inlineContainer">
+            <label for="perfil" class="labelFeriado">Perfil Venta en Línea:</label>
+            <input type="number" id="perfil" inputmode="tel" class="input">
+          </div>
+          <div class="inlineContainer">
+            <label for="sucursal" class="labelFeriado">Sucursal:</label>
+            <input type="number" id="sucursal" inputmode="tel" class="input">
+          </div>
+        </div>
+
+        <div class="feriadoPicker">
+            <div class="inlineContainer">
+              <label for="base" class="labelFeriado">Base Productos:</label>
+              <select id="base" class="input">
+                <option value="nm">NewManag</option>
+                <option value="tn">TiendaNube</option>
+              </select>
+            </div>
+            <div class="inlineContainer">
+              <label for="ventasTN" class="labelFeriado">Descarga Ventas de TN:</label>
+              <input id="ventasTN" type="checkbox" role="switch">
+            </div>  
+        </div>
+
+        <div class="inlineContainer" style="width: 80%">
+          <button onclick="authorizeTN()" style="margin: 15px;" class="tn-button">
+            Autorizar TN
+          </button>
+          <label for="tokenTN" class="labelFeriado">Código TN:</label>
+          <input type="text" id="codeTN" class="input">
+        </div>
+        <div class="inlineContainer">
+          <button onclick="solicitarTN()" style="margin: 15px;" class="tn-button">
+            Solicitar y Registrar Token TN
+          </button>
+          <div class="cartel" id="cartelTN" style="display: none;">
+            <i class="fa-solid fa-circle-check" size="2rem"></i>
+              <span style="margin: 10px;">
+                Registrado Con Éxito.
+              </span>
+          </div>
+        </div>
+        
+        <div class="feriadoPicker">
+          <button class="btn" onclick="registrar(true)" style="float: right;">
+            <i class="fa-solid fa-floppy-disk"></i>
+            Registrar Y Reiniciar Proyecto
+          </button>
+        </div>
+      </div>
+
+      <dialog id="seccionPrompt" class="modal">
+        <div class="modalTitle">
+          <button id="closeButton" class="closeButton" onclick="closeModal()">          
+            <i class="fa-solid fa-times fa-2xl"></i>
+          </button>
+          <label for="editor">Editor de Prompts:</label>
+          <select id="tipoPrompt" class="input" onchange="cambioTipoPrompt()">
+            <option value="prompt1">Comercial Productos</option>
+            <option value="prompt2">Comercial Respuesta</option>
+            <option value="promptConsultorio">Consultorio</option>
+            <option value="promptConsultaBD">Consulta Base de Datos</option>
+            <option value="promptRespuestaBD">Respuesta Base de Datos</option>
+          </select>
+          <button class="btn" onclick="registrarPrompt()" style="float: right;">
+            <i class="fa-solid fa-floppy-disk"></i>
+            Registrar Prompt
+          </button>
+          <div class="cartel" id="cartelPrompt" style="display: none;">
+            <i class="fa-solid fa-circle-check" size="2rem"></i>
+              <span style="margin: 10px;">
+                Registrado Con Éxito.
+              </span>
+          </div>
+        </div>
+        <textarea id="prompt" class="editor">
+
+        </textarea>
+      </dialog>
+
+      <div id="seccionCuentas" style="display: none;">
+        <div class="servicios">
+          <label for="cuentas">Cuentas:</label>    
+        </div>
+        <div id="cuentas">
+          <div class="filaCuentas">
+              <div class="colServ" style="font-weight: bolder;">ID</div>
+              <div class="colServ" style="font-weight: bolder;">Nombre</div>
+              <div class="colServ" style="font-weight: bolder;">Bot Activo</div>
+              <div class="colServ" style="font-weight: bolder;">Acción</div>
+              <div class="colServ" style="font-weight: bolder;">BlackList</div>
+              <div class="colServ" style="font-weight: bolder;">URL</div>
+          </div>
+          <div id="detalleCuentas"></div>
+          <div class="aclaracion">
+            <span>
+              * Los números de la blacklist se deben separar por ;
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div id="seccionValidar" style="display: none;">
+        <div class="servicios">
+          <label for="validar">Validar Usuarios por Número:</label>    
+          <button class="btn" type="button" onclick="agregarValidacion()">
+            <i class="fa-solid fa-plus"></i>
+            Agregar Validación
+          </button>
+        </div>
+        <div id="validar">
+          <div class="filaValidaciones">
+              <div class="colValidaciones" style="font-weight: bolder;">Número</div>
+              <div class="colValidaciones" style="font-weight: bolder;">Nombre</div>
+              <div class="colValidaciones" style="font-weight: bolder;">Base</div>
+              <div class="colValidaciones" style="font-weight: bolder;">Token OpenAI</div>
+              <div class="colValidaciones" style="font-weight: bolder;">Activo</div>
+              <div class="colValidaciones" style="font-weight: bolder;">Acción</div>
+          </div>
+          <div class="aclaracion">
+            <span>
+              * Los nombres de las bases de datos se deben separar por ;
+            </span>
+          </div>
+          <div id="detalleValidaciones"></div>
+        </div>
+      </div>     
+    </div>
+    <a href="/pp" class="pp">Politica de Privacidad</a>    
+    
+    <script src="index.js"></script>
+    <script src="auxiliares.js"></script>
+  </body>
+  </html>

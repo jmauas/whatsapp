@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nuevo Turno</title>
+    <!-- FontAwesome -->
+    <script
+      src="https://kit.fontawesome.com/c6d95e531a.js"
+      crossorigin="anonymous"></script>
+    <style>
+      /* CSS styles for the dashboard */
+      body {
+        background-color: #f1dddd;
+        background-image: linear-gradient(to bottom right, #ffffff, #f2f2f2);
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        color: #333333;
+        text-align: center;
+        margin: 30px;
+      }
+
+      #configForm {
+        max-width: 700px;
+        padding: 15px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+        margin: 0 auto 30px auto;
+      }
+
+      label {
+        display: block;
+        color: #635f5f;
+        font-weight: bold;
+      }
+
+      input[type="text"],
+      input[type="tel"],
+      input[type="email"],
+      textarea,
+      select {
+        width: 95%;
+        padding: 10px;
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+        font-size: 14px;
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 36px;
+        form-sizing: content;
+      }
+
+      button {
+        background-color: #ff66005b;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #ff5500;
+      }
+
+      .select {
+        width: 90%;
+        padding: 10px;
+        border: 1px solid #cccccc;
+        border-radius: 15px;
+        font-size: 20px;
+      }
+
+      .calendar-button {
+        background-image: url("google-calendar-logo.png");
+        background-repeat: no-repeat;
+        background-position: left;
+        background-size: 48px;
+        background-position-x: left;
+        padding-left: 56px;
+        height: 56px;
+        color: black;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .feriadoPicker {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: start;
+        gap: 20px;
+        margin: 15px;
+      }
+
+      .paciente {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: start;
+        gap: 20px;
+        margin: 15px;
+        flex-wrap: wrap;
+      }
+
+      @media (max-width: 600px) {
+        .paciente {
+          flex-direction: column;
+          align-items: start;
+          justify-content: center;
+          gap: 15px;
+          margin-bottom: 20px;
+        }
+      }
+
+      .labelFeriado {
+        font-weight: normal;
+        margin: 10px;
+      }
+
+      .encabezado {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        color: #ffffff;
+      }
+
+      .btn {
+        background-color: #ff66005b;
+        border: none;
+        padding: 10px 10px;
+        border-radius: 8px;
+        font-size: 12px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        color: black;
+      }
+
+      .btn-nav {
+        background-color: #ff66005b;
+        border: none;
+        padding: 10px 10px;
+        border-radius: 8px;
+        font-size: 16px;
+        text-decoration: none;
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        color: black;
+      }
+
+      .btn-verTurnos {
+        background-color: #ff66005b;
+        border: none;
+        padding: 15px;
+        border-radius: 8px;
+        font-size: 16px;
+        text-decoration: none;
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        color: black;
+      }
+
+      .btn-volver {
+        background-color: #ff66005b;
+        border: none;
+        padding: 15px;
+        border-radius: 8px;
+        font-size: 16px;
+        text-decoration: none;
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        color: black;
+      }
+
+      .input {
+        border: 1px solid #cccccc;
+        border-radius: 10px;
+        font-size: 16px;
+        padding: 10px;
+      }
+
+      .cartel {
+        background-color: #4caf50; /* color de fondo verde */
+        color: white; /* color de texto blanco */
+        padding: 15px; /* espacio alrededor del texto */
+        margin: 10px 0; /* espacio arriba y abajo del cartel */
+        border-radius: 15px; /* bordes redondeados */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .cartelError {
+        background-color: rgb(218, 6, 6);
+        color: white; /* color de texto blanco */
+        padding: 15px; /* espacio alrededor del texto */
+        margin: 10px 0; /* espacio arriba y abajo del cartel */
+        border-radius: 15px; /* bordes redondeados */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .aclaracion {
+        background-color: #dfe9df;
+        color: black;
+        padding: 5px;
+        margin: 4px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+      }
+    
+
+      .menuItem {
+        font-size: 16px;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande";
+        font-weight: bold;
+        color: black;
+        /* padding: 25px; */
+      }
+
+      .inlineContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: start;
+        gap: 20px;
+      }
+
+      #seccPaciente {
+        opacity: 0;
+        visibility: hidden;
+        height: 0;
+        overflow: hidden;
+        transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+      }
+
+      #seccPaciente.show {
+        opacity: 1;
+        height: auto;
+        visibility: visible;
+      }
+
+      #parte1 {
+        opacity: 0;
+        visibility: hidden;
+        height: 0;
+        overflow: hidden;
+        transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+      }
+
+      #parte1.show {
+        opacity: 1;
+        height: auto;
+        visibility: visible
+      }
+
+      #parte2 {
+        opacity: 0;
+        visibility: hidden;
+        height: 0;
+        overflow: hidden;
+        transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+      }
+
+      #parte2.show {
+        opacity: 1;
+        height: auto;
+        visibility: visible;
+      }
+
+      #contenedorRegistrar {
+        opacity: 0;
+        visibility: hidden;
+        height: 0;
+        overflow: hidden;
+        transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+      }
+
+      #contenedorRegistrar.show {
+        opacity: 1;
+        height: auto;
+        visibility: visible;
+        display: flex; 
+        flex-direction: row-reverse; 
+        justify-content: space-around; 
+        align-items: center; 
+        flex-wrap: wrap; 
+        gap: 15px;
+      }
+
+      .widthResponsive {
+        width: 25%;
+      }
+
+      @media (max-width: 600px) {
+        .widthResponsive {
+          width: 90%;
+        }
+      }
+
+      .filaFecha {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 10px;
+        margin: 10px;
+        padding: 10px;
+        align-items: center;
+        justify-content: center;
+        border: 0.5px solid #ff5500;
+        border-radius: 10px;
+        color: black;
+      }
+
+      .verMas {
+        grid-column: 1 / 3;
+        background-color: #ff66005b;
+        color: black;
+        border: none;
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      .verMas:hover {
+        background-color: #ff5500;
+      }
+
+      .filaHoras {
+        grid-column: 1 / 3;
+        opacity: 0;
+        visibility: hidden;
+        height: 0;
+        overflow: hidden;
+        transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+      }
+
+      .filaHoras.show {
+          opacity: 1;
+          height: auto;
+          visibility: visible;
+      }
+
+      .filaHora {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 10px;
+        margin: 10px;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .fechaTurno {
+        color: black;
+        padding: 5px;
+        font-size: 20px;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .horaTurno {
+        background-color: #f0d6c4ef;
+        color: black;
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .btn-horas {
+        background-color: #ff66005b;
+        color: black;
+        border: none;
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      .btn-horas:hover {
+        background-color: #ff5500;
+      }
+      
+      .btn-turno {
+        background-color: indianred;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      .btn-turno:hover {
+        background-color: #ff5500;
+      }
+
+      .confFila {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 10px;
+        margin: 5px;
+        padding: 10px;
+        align-items: center;
+        justify-content: center;
+        background-color: #eee8e8;
+        color: black;
+        border-radius: 10px;
+      }
+
+      .confTitulo {
+        color: black;
+        border: none;
+        padding: 5px;
+        border-radius: 10px;
+        font-size: 16px;
+      }
+
+      .confValor {
+        background-color: #f0d6c4ef;
+        color: black;
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 18px;
+        border: 0.5px solid grey;
+      }
+
+      #loading {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        margin: 20px;
+        margin-bottom: 40px;
+      }
+
+      .loader {
+        border: 16px solid #f3f3f3; /* Light grey */
+        border-top: 16px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        animation: spin 2s linear infinite;
+      }
+
+      .pp {
+        font-size: 14px;
+        color: #333333;
+        text-decoration: none;
+        margin: 30px 65px;
+        display: block;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      @media (max-width: 600px) {
+        .feriadoPicker {
+          flex-wrap: wrap;
+          gap: 15px;
+          margin-bottom: 20px;
+        }
+      }
+
+      /* CSS styles for the dashboard */
+      @media (max-width: 600px) {
+        #configForm {
+          max-width: 75%;
+          animation: mobileFormAnimation 0.5s forwards;
+        }
+      }
+
+      @keyframes mobileFormAnimation {
+        0% {
+          width: 95%;
+          padding: 10px;
+        }
+        100% {
+          width: 100%;
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="encabezado">
+      <h1>Nuevo Turno</h1>
+      <img src="logo.png" alt="logo" width="150px" />
+    </div>
+
+    <div id="configForm">
+      <div id="parte1" class="show">      
+        <div class="feriadoPicker">
+          <label for="doctor">Doctor:</label>
+          <select id="doctor" class="select" onChange="cambioDoctor()"></select>
+        </div>
+
+        <div class="feriadoPicker" style="display: none" id="seccTipoTurno">
+          <label for="servicio">Tipo de Turno:</label>
+          <select id="servicio" class="select" onChange="cambioServicio()">
+          </select>
+        </div>    
+
+        <div class="feriadoPicker" style="display: none" id="seccDNI">
+          <label for="dni">DNI:</label>
+          <div style="position: relative; margin-right: 30px">
+            <input type="number" inputmode="tel" id="dni" class="input" onChange="cambioDNI()" style="padding-right: 30px" />
+            <i class="fa-brands fa-searchengin fa-xl" style="position: absolute; right: -30px; top: 50%"></i>
+          </div>
+          <button class="btn-verTurnos" id="btn-verTurnosDNI" type="button" onclick="cambioDNI()">
+            <i class="fa fa-check fa-2xl"></i>
+            Validar DNI
+          </button>
+        </div>
+        
+        <div class="paciente" id="seccPaciente">
+          <div class="inlineContainer">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" class="input" onChange="cambioNombre()" />
+          </div>
+          <div class="inlineContainer">
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" class="input" onChange="" />
+          </div>
+          <div class="inlineContainer">
+            <label for="celular">Celular:</label>
+            <input type="number" inputmode="tel" id="celular" class="input" onChange="cambioCelu()" style="padding-right: 30px" />
+          </div>
+          <div class="inlineContainer">
+            <label for="mail">Mail:</label>
+            <input type="text" id="mail" class="input" />
+          </div>
+            <div class="inlineContainer">
+            <label for="cobertura">Cobertura Médica: y Plan</label>
+            <input type="text" id="cobertura" class="input" />
+          </div>
+          <button class="btn-verTurnos" id="btn-verTurnos" type="button" onclick="verTurnos()">
+            <i class="fa-regular fa-calendar-days fa-2xl"></i>
+            Ver Turnos Disponibles
+          </button>
+          <div class="cartelTurno" id="cartelTurno" style="display: none; flex-direction: column">
+            <span style="margin: 10px" id="mensajeTurno" class="mensajeTurno">
+            </span>          
+          </div>
+            <div class="cartelError" id="cartelErrorTurno" style="display: none">
+            <i class="fa-solid fa-circle-times fa-2xl" size="2rem"></i>
+            <span style="margin: 10px" id="mensajeErrorTurno"> </span>
+          </div>
+        </div>
+      </div>
+
+      <div id="parte2">
+        <div id="loading">
+          <div class="loader"></div>
+          <span>Buscando Turnos Disponibles ...</span>
+        </div>
+        <div id="agenda">
+        </div>
+        <button onclick="volver()" class="btn-volver">
+          <i class="fa-solid fa-delete-left fa-2xl"></i>
+          volver
+        </button>
+        <div id="contenedorRegistrar" >
+          <div id="datosTurno">            
+          </div>
+          <div class="feriadoPicker">
+            <label for="observaciones">Observaciones:</label>
+            <textarea type="text" id="observaciones" class="input"></textarea>
+          </div>
+          <div class="cartel" id="cartelOk" style="display: none">
+            <i class="fa-solid fa-circle-check fa-2xl" size="2rem"></i>
+            <span style="margin: 10px"> Turno Registrado Con Éxito. </span>
+          </div>
+
+          <div class="cartelError" id="cartelError" style="display: none">
+            <i class="fa-solid fa-circle-times fa-2xl" size="2rem"></i>
+            <span style="margin: 10px" id="mensajeError"> </span>
+          </div>
+
+          <button onclick="volver()" class="btn-volver" id="btnVolver">
+            <i class="fa-solid fa-delete-left fa-2xl"></i>
+            Modificar Turno
+          </button>
+
+          <button onclick="registrarTurno()" id="btnRegistrar" class="calendar-button">
+            Confirmar Turno
+          </button>
+        </div>
+      </div>
+    </div>    
+    <a href="/pp" class="pp">Politica de Privacidad</a>    
+    <script src="paciente.js"></script>
+    <script src="auxiliares.js"></script>
+  </body>
+</html>
