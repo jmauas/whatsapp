@@ -46,9 +46,9 @@ const main = async () => {
 
         await initServer(providers)   
 
-        agendarWa();
-        agendarActualizarTN();
-        crearCarpetasTemporales();
+        //agendarWa();
+        //agendarActualizarTN();
+        //crearCarpetasTemporales();
     } catch (error) {
 		console.log('ERROR: ', error)
 	}
