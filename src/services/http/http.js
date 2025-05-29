@@ -14,7 +14,8 @@ import fs from 'fs';
 
 const root = process.cwd();
 const config = await obtenerConfig();
-const port = Number(config.puerto) ?? 3000;
+// const port = Number(config.puerto) ?? 3000;
+const port = process.env.PORT ? Number(process.env.PORT) : 3000;
 
 export const initServer = async (providers) => {
     

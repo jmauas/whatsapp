@@ -6,13 +6,5 @@
     "bot": false,
     "blackList": "",
     "url": "http://localhost:3003"
-  },
-  {
-    "id": 2,
-    "nombre": "",
-    "token": "cddtMjfiVeL72lnQisPcV7P9XlZNNqbrQTVjE9qvmw9NoiJGYfLBdEkfxeEB",
-    "bot": true,
-    "blackList": "",
-    "url": "http://localhost:3004"
   }
 ]
