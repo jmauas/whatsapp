@@ -12,7 +12,7 @@
     "2024-04-24",
     "2024-04-25;2024-04-27"
   ],
-  "provider": "wppconnect",
+  "provider": "baileys",
   "envio": false,
   "horaEnvio": "00:06",
   "diasEnvio": "7",
